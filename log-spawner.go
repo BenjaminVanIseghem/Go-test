@@ -1,20 +1,34 @@
 package main
 
-import "log-spawner/logger"
-
 //All imports necessary for the logging chain
+import (
+	"log-spawner/logger"
+)
+
+var m1 = make(map[string]interface{})
 
 //Initiliazing of the logrus object
 func init() {
-
+	m1["fixed key 1"] = "string 1"
+	m1["fixed key 2"] = "string 2"
+	m1["fixed key 3"] = 8
 }
 
 func main() {
-	for i := 0; i < 25; i++ {
-		logger.Info("Info message")
-		logger.Warning("Warning message")
-		logger.Error("Error message")
-	}
+	// for i := 0; i < 25; i++ {
+	// 	logger.Info("Info message")
+	// 	logger.Warning("Warning message")
+	// 	logger.Error("Error message")
+	// }
+
+	m2 := make(map[string]interface{})
+
+	m2["key1"] = "value1"
+	m2["key2"] = "value2"
+	m2["key3"] = "value3"
+	m2["key4"] = 6
+
+	logger.Info("info message", m1)
 }
 
 //EXAMPLES OF ALL SEVERITY LEVELS OF LOGRUS

@@ -10,12 +10,26 @@ var warnLogger = createWarningLogger()
 var errLogger = createErrorLogger()
 
 //Info logs info messages
-func Info(msg string) {
-	infoLogger.WithFields(logrus.Fields{
-		"id":           1,
-		"info field 2": "some value",
-		"info field 3": "another value",
-	}).Info(msg)
+func Info(msg string, fields map[string]interface{}) {
+	// for key, value := range strings {
+	// 	fmt.Println("Key:", key, "Value:", value)
+	// }
+	// for key, value := range numbers {
+	// 	fmt.Println("Key:", key, "Value:", value)
+	// }
+
+	fields = logrus.Fields(fields)
+	// numbers = logrus.Fields(numbers)
+	logrus.WithFields(
+		fields,
+	).Info(msg)
+
+	// infoLogger.WithFields(
+	// logrus.Fields{
+	// "id":           1,
+	// "info field 2": "some value",
+	// "info field 3": "another value",
+	// }).Info(msg)
 }
 
 //Warning logs warning messages
