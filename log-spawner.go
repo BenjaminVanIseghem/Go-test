@@ -1,12 +1,8 @@
 package main
 
-//All imports necessary for the logging chain
-import (
-	"log-spawner/logger"
-	"math/rand"
-)
+import "log-spawner/logger"
 
-var infoLogger = logger.CreateInfoLogger()
+//All imports necessary for the logging chain
 
 //Initiliazing of the logrus object
 func init() {
@@ -15,8 +11,9 @@ func init() {
 
 func main() {
 	for i := 0; i < 25; i++ {
-		num := rand.Intn(100)
-		infoLogger.Infof("Info number: %d", num)
+		logger.Info("Info message")
+		logger.Warning("Warning message")
+		logger.Error("Error message")
 	}
 }
 
