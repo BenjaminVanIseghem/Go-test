@@ -52,7 +52,6 @@ func createKafkaLogger() *logrus.Logger {
 	if err != nil {
 		logrus.Error("Problem with kafka hook")
 	}
-
 	//Add hook to the tempLogger
 	tempLogger.Hooks.Add(hook)
 
