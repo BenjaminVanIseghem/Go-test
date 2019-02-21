@@ -2,6 +2,8 @@ package main
 
 //All imports necessary for the logging chain
 import (
+	"math/rand"
+
 	lkh "github.com/arriqaaq/logrus-kafka"
 	log "github.com/sirupsen/logrus"
 )
@@ -10,19 +12,13 @@ var infoLogger = createInfoLogger()
 
 //Initiliazing of the logrus object
 func init() {
-	// //use a temporary logger to add the hook
-	// var tempLogger = log.New()
-	//
 
-	// //Create infoLogger with the necessary fields for this level
-
-	// //Log to kafka, the previously added fields will be present in the log and kafka
-	// infoLogger.Info("Info hook is in place")
 }
 
 func main() {
 	for i := 0; i < 25; i++ {
-		infoLogger.Infof("Info number: %d", i)
+		num := rand.Intn(100)
+		infoLogger.Infof("Info number: %d", num)
 	}
 }
 
@@ -36,12 +32,13 @@ func createInfoLogger() *log.Entry {
 		&log.JSONFormatter{
 			TimestampFormat: "2006-01-02 15:04:05",
 		},
-		[]string{"192.168.11.148:9092"},
+		[]string{"192.168.99.222:9092"},
 		"info")
 	//Error handling for the creating of the hook
 	if err != nil {
 		log.Error("Problem with kafka hook")
 	}
+
 	//Add hook to temporary logger object
 	tempLogger.Hooks.Add(infoHook)
 
