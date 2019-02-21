@@ -123,7 +123,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/Shopify/sarama",
     "github.com/arriqaaq/logrus-kafka",
     "github.com/sirupsen/logrus",
   ]
