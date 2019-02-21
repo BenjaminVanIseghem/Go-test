@@ -49,7 +49,7 @@ func createInfoLogger() *logrus.Logger {
 		&logrus.JSONFormatter{
 			TimestampFormat: "2006-01-02 15:04:05",
 		},
-		[]string{"192.168.99.222:9092"},
+		[]string{"localhost:9092"},
 		"info")
 	//Error handling for the creating of the hook
 	if err != nil {
@@ -77,7 +77,7 @@ func createWarningLogger() *logrus.Logger {
 		&logrus.JSONFormatter{
 			TimestampFormat: "2006-01-02 15:04:05",
 		},
-		[]string{"192.168.99.222:9092"},
+		[]string{"localhost:9092"},
 		"warning")
 	//Error handling for the creating of the hook
 	if err != nil {
@@ -105,8 +105,8 @@ func createErrorLogger() *logrus.Logger {
 		&logrus.JSONFormatter{
 			TimestampFormat: "2006-01-02 15:04:05",
 		},
-		[]string{"192.168.99.222:9092"},
-		"Error")
+		[]string{"localhost:9092"},
+		"error")
 	//Error handling for the creating of the hook
 	if err != nil {
 		logrus.Error("Problem with kafka hook")
