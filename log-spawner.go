@@ -15,11 +15,6 @@ func init() {
 }
 
 func main() {
-	// for i := 0; i < 25; i++ {
-	// 	logger.Info("Info message")
-	// 	logger.Warning("Warning message")
-	// 	logger.Error("Error message")
-	// }
 
 	m2 := make(map[string]interface{})
 
@@ -28,7 +23,13 @@ func main() {
 	m2["key3"] = "value3"
 	m2["key4"] = 6
 
-	logger.Info("info message", m1)
+	// logger.Info("info message", m1)
+
+	for i := 0; i < 25; i++ {
+		logger.Info("Info message", m1)
+		logger.Warning("Warning message", m2)
+		logger.Error("Error message", m2)
+	}
 }
 
 //EXAMPLES OF ALL SEVERITY LEVELS OF LOGRUS

@@ -11,43 +11,35 @@ var errLogger = createErrorLogger()
 
 //Info logs info messages
 func Info(msg string, fields map[string]interface{}) {
-	// for key, value := range strings {
-	// 	fmt.Println("Key:", key, "Value:", value)
-	// }
-	// for key, value := range numbers {
-	// 	fmt.Println("Key:", key, "Value:", value)
-	// }
-
+	//Convert fields parameter to logrus fields type
 	fields = logrus.Fields(fields)
-	// numbers = logrus.Fields(numbers)
-	logrus.WithFields(
+
+	//Log the given fields and message via logrus
+	infoLogger.WithFields(
 		fields,
 	).Info(msg)
-
-	// infoLogger.WithFields(
-	// logrus.Fields{
-	// "id":           1,
-	// "info field 2": "some value",
-	// "info field 3": "another value",
-	// }).Info(msg)
 }
 
 //Warning logs warning messages
-func Warning(msg string) {
-	warnLogger.WithFields(logrus.Fields{
-		"id":              2,
-		"warning field 2": "some warning",
-		"warning field 3": "another warning value",
-	}).Warn(msg)
+func Warning(msg string, fields map[string]interface{}) {
+	//Convert fields parameter to logrus fields type
+	fields = logrus.Fields(fields)
+
+	//Log the given fields and message via logrus
+	warnLogger.WithFields(
+		fields,
+	).Warning(msg)
 }
 
 //Error logs error messages
-func Error(msg string) {
-	errLogger.WithFields(logrus.Fields{
-		"id":            3,
-		"error field 2": "some error",
-		"error field 3": "another error value",
-	}).Error(msg)
+func Error(msg string, fields map[string]interface{}) {
+	//Convert fields parameter to logrus fields type
+	fields = logrus.Fields(fields)
+
+	//Log the given fields and message via logrus
+	errLogger.WithFields(
+		fields,
+	).Error(msg)
 }
 
 //Create a logger that uses a hook to post logs to kafka on the "info" topic
